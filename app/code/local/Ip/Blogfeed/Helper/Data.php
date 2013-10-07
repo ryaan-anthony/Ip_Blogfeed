@@ -27,6 +27,11 @@ class Ip_Blogfeed_Helper_Data extends Mage_Core_Helper_Abstract
         return date('F jS, Y', strtotime($time));
     }
 
+    public function filter($content)
+    {
+        $_processor = Mage::helper('cms')->getBlockTemplateProcessor();
+        return $_processor->filter($content);
+    }
 
 
 }

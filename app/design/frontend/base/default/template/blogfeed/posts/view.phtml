@@ -7,10 +7,11 @@
 ?>
 <?php
     $_post = $this->getPost();
+    $_helper = $this->helper('blogfeed');
 ?>
 <div class="page-title">
     <h1><?php echo $_post->getTitle();?></h1>
 </div>
 <div class="std">
-    <?php echo $_post->getDescription();?>
+    <?php echo $_helper->filter($_post->getDescription());?>
 </div>
