@@ -9,3 +9,6 @@ Needs:
 * staging functionality
 * taxonomies
 * category heirarchy
+* meta tags
+* social sharing
+* rss feeds
