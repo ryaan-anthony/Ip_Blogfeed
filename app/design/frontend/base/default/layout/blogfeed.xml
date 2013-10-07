@@ -6,7 +6,7 @@
             <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
         </reference>
         <reference name="content">
-            <block type="blogfeed/posts_single" name="posts" template="blogfeed/posts/single.phtml"/>
+            <block type="blogfeed/posts_view" name="posts" template="blogfeed/posts/view.phtml"/>
         </reference>
     </blogfeed_posts_index>
     <blogfeed_posts_list>

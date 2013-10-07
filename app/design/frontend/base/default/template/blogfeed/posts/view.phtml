@@ -1,0 +1,16 @@
+<?php
+/**
+ * Post view template
+ *
+ * @see Ip_Blogfeed_Block_Posts_View
+ */
+?>
+<?php
+    $_post = $this->getPost();
+?>
+<div class="page-title">
+    <h1><?php echo $_post->getTitle();?></h1>
+</div>
+<div class="std">
+    <?php echo $_post->getDescription();?>
+</div>
