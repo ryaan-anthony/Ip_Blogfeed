@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<layout>
+    <adminhtml_posts_index>
+        <reference name="content">
+            <block type="blogfeed/adminhtml_posts" name="posts" />
+        </reference>
+    </adminhtml_posts_index>
+
+    <adminhtml_posts_edit>
+        <update handle="editor" />
+        <reference name="content">
+            <block type="blogfeed/adminhtml_posts_edit" name="posts_edit" />
+        </reference>
+    </adminhtml_posts_edit>
+</layout>

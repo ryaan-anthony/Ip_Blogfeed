@@ -1,0 +1,43 @@
+<?php
+/**
+ * Post list template
+ *
+ * @see Ip_Blogfeed_Block_Posts_List
+ */
+?>
+<?php
+    $_postCollection=$this->getPostCollection();
+    $_helper = $this->helper('blogfeed');
+?>
+<?php if(!$_postCollection->count()): ?>
+    <p class="note-msg"><?php echo $this->__('There are no posts matching the selection.') ?></p>
+<?php else: ?>
+    <div class="blogfeed-posts">
+        <?php $_iterator = 0; ?>
+        <ol class="post-list" id="post-list">
+            <?php foreach ($_postCollection as $_post): ?>
+                <li class="post<?php if( ++$_iterator == sizeof($_postCollection) ): ?> last<?php endif; ?>">
+                    <?php $_postNameStripped = $this->stripTags($_post->getTitle(), null, true); ?>
+                    <h2 class="post-name">
+                        <a href="<?php echo $_post->getPostUrl() ?>" title="<?php echo $_postNameStripped; ?>">
+                            <?php echo $_post->getTitle(); ?>
+                        </a>
+                    </h2>
+                    <p>
+                        Posted on <?php echo $_helper->getTimestamp($_post);?>
+                        <?php if($_post->isUpdated()):?>
+                            <span class="updated">(Last updated on <?php echo $_helper->getDate($_post);?>)</span>
+                        <?php endif;?>
+                    </p>
+                    <div class="desc std">
+                        <?php echo $_post->getShortDescription(); ?>
+                        <a href="<?php echo $_post->getPostUrl() ?>" title="<?php echo $_postNameStripped ?>" class="link-learn">
+                            <?php echo $this->__('Read More') ?>
+                        </a>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ol>
+        <script type="text/javascript">decorateList('post-list', 'none-recursive')</script>
+    </div>
+<?php endif; ?>

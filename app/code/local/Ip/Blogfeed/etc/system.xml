@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+        <cms translate="label">
+            <label>CMS</label>
+            <sort_order>250</sort_order>
+        </cms>
+    </tabs>
+	<sections>
+         <blogfeed translate="label">
+         	<label>Blogfeed</label>
+			<tab>cms</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>99999</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+            <groups>
+                <posts translate="label comment">
+                    <label>Posts</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<fields>
+                        <blog_url translate="label">
+                            <label>Blog Url</label>
+                            <frontend_type>text</frontend_type>
+                            <backend_model>blogfeed/backend_url</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blog_url>
+                    </fields>
+                </posts>
+            </groups>
+        </blogfeed>
+    </sections>
+</config>
