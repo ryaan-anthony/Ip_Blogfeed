@@ -46,6 +46,10 @@ class Ip_Blogfeed_Adminhtml_PostsController extends Mage_Adminhtml_Controller_Ac
                     $url_key = Mage::helper('blogfeed')->makeUrlKey($model->getTitle());
                     $model->setUrlKey($url_key);
                 }
+                /* need posts_id for url_rewrite */
+                if(!$model->getPostsId()){
+                    $model->save();
+                }
                 $model->setRequestPath();
                 $model->save();
                 $_session->setFormData(false);
