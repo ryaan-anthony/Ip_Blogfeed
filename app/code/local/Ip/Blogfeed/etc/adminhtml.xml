@@ -20,10 +20,10 @@
                 <children>
                     <cms>
                         <children>
-                            <blogfeed>
+                            <posts module="blogfeed">
                                 <title>Blog Posts</title>
                                 <sort_order>10</sort_order>
-                            </blogfeed>
+                            </posts>
                         </children>
                     </cms>
                 </children>
