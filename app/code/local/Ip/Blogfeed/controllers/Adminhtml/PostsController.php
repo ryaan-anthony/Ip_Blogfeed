@@ -32,7 +32,7 @@ class Ip_Blogfeed_Adminhtml_PostsController extends Mage_Adminhtml_Controller_Ac
     {
         $_session = Mage::getSingleton('adminhtml/session');
         if ($data = $this->getRequest()->getPost()){
-
+            /** @var $model Ip_Blogfeed_Model_Posts */
             $model = Mage::getSingleton('blogfeed/posts');
             /* set all post data */
             $model->setData($data);
@@ -46,12 +46,8 @@ class Ip_Blogfeed_Adminhtml_PostsController extends Mage_Adminhtml_Controller_Ac
                     $url_key = Mage::helper('blogfeed')->makeUrlKey($model->getTitle());
                     $model->setUrlKey($url_key);
                 }
-                /* need posts_id for url_rewrite */
-                if(!$model->getPostsId()){
-                    $model->save();
-                }
-                $model->setRequestPath();
                 $model->save();
+                $model->setRequestPath();
                 $_session->setFormData(false);
                 $_session->addSuccess(Mage::helper('blogfeed')->__('Blog was successfully saved.'));
                 if ($this->getRequest()->getParam('back')) {

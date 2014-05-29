@@ -5,8 +5,8 @@ class Ip_Blogfeed_PostsController extends Mage_Core_Controller_Front_Action
 
     public function indexAction()
     {
-        if($entity_id = $this->getRequest()->getParam('posts_id', null)){
-            $post = Mage::getModel('blogfeed/posts')->load($entity_id);
+        if($posts_id = $this->getRequest()->getParam('posts_id', null)){
+            $post = Mage::getModel('blogfeed/posts')->load($posts_id);
             Mage::register('blogfeed_post', $post);
             $this->loadLayout();
             $this->renderLayout();

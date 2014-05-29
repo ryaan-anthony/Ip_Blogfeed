@@ -5,5 +5,6 @@ class Ip_Blogfeed_Model_Resource_Posts_Collection extends Mage_Core_Model_Resour
     protected function _construct()
     {
         $this->_init('blogfeed/posts');
+        $this->setOrder('timestamp', 'desc');
     }
 }

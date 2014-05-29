@@ -33,11 +33,6 @@ class Ip_Blogfeed_Block_Adminhtml_Posts_Grid extends Mage_Adminhtml_Block_Widget
             'align'     =>'left',
             'index'     => 'title',
         ));
-        $this->addColumn('meta_title', array(
-            'header'    => Mage::helper('blogfeed')->__('Meta Title'),
-            'align'     =>'left',
-            'index'     => 'meta_title',
-        ));
         $this->addColumn('url_key', array(
             'header'    => Mage::helper('blogfeed')->__('Post Url'),
             'align'     =>'left',

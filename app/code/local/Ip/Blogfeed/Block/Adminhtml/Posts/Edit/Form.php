@@ -28,18 +28,18 @@ class Ip_Blogfeed_Block_Adminhtml_Posts_Edit_Form extends Mage_Adminhtml_Block_W
             'style'     =>  'width:700px;',
             'required'  => true,
             'name'      => 'title',
-        ))
-
-        $fieldset->addField('meta_title', 'text', array(
-            'label'     => Mage::helper('blogfeed')->__('Meta Title'),
-            'style'     =>  'width:700px;',
-            'name'      => 'meta_title',
         ));
 
         $fieldset->addField('url_key', 'text', array(
             'label'     => Mage::helper('blogfeed')->__('Url Key'),
             'style'     =>  'width:700px;',
             'name'      => 'url_key',
+        ));
+
+        $fieldset->addField('meta_title', 'text', array(
+            'label'     => Mage::helper('blogfeed')->__('Meta Title'),
+            'style'     =>  'width:700px;',
+            'name'      => 'meta_title',
         ));
 
         $fieldset->addField('description', 'editor', array(

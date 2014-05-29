@@ -11,11 +11,9 @@ class Ip_Blogfeed_Block_Posts_View extends Mage_Core_Block_Template
 
     protected function _prepareLayout()
     {
-        parent::_prepareLayout();
-        $headBlock = $this->getLayout()->getBlock('head');
-        $title = $this->getPost()->getMetaTitle();
-        $headBlock->setTitle($title);
-        return $this;
+        if ($meta_title = Mage::registry('blogfeed_post')->getMetaTitle()) {
+            $this->getLayout()->getBlock('head')->setTitle($meta_title);
+        }
     }
 
 }
