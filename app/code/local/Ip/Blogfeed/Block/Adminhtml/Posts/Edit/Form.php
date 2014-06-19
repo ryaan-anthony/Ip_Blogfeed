@@ -32,7 +32,7 @@ class Ip_Blogfeed_Block_Adminhtml_Posts_Edit_Form extends Mage_Adminhtml_Block_W
         ));
 
         $width = Mage::getStoreConfig('blogfeed/posts/image_width');
-        $height = Mage::getStoreConfig('blogfeed/posts/image_height');;
+        $height = Mage::getStoreConfig('blogfeed/posts/image_height');
         $image_size = "The uploaded image will be resized to $width x $height.";
 
         $fieldset->addField('featured_image', 'image', array(

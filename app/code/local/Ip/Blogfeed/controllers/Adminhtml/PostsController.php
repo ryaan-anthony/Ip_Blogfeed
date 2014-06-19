@@ -127,7 +127,9 @@ class Ip_Blogfeed_Adminhtml_PostsController extends Mage_Adminhtml_Controller_Ac
         $image->backgroundColor(false);
         $image->quality(100);
         $image->setWatermarkImageOpacity(0);
-        $image->resize(120, 120);
+        $width = Mage::getStoreConfig('blogfeed/posts/image_width');
+        $height = Mage::getStoreConfig('blogfeed/posts/image_height');
+        $image->resize($width, $height);
         $image->save($path);
     }
 
