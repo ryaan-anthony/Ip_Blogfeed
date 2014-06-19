@@ -46,6 +46,30 @@ class Ip_Blogfeed_Adminhtml_PostsController extends Mage_Adminhtml_Controller_Ac
                     $url_key = Mage::helper('blogfeed')->makeUrlKey($model->getTitle());
                     $model->setUrlKey($url_key);
                 }
+                $image_id = 'featured_image';
+                if(isset($_FILES[$image_id]['name']) && $_FILES[$image_id]['name']) {
+                    $uploader = new Varien_File_Uploader($image_id);
+                    $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
+                    $uploader->setAllowRenameFiles(false);
+                    $uploader->setFilesDispersion(false);
+                    $path = $this->check_path(Mage::getBaseDir('media').DS.'gallery');
+                    $image_name = $uploader->getCorrectFileName($_FILES[$image_id]['name']);
+                    $uploader->save($path, $image_name);
+                    $image_url = 'gallery/'.$image_name;
+                    $this->resize_image($path.DS.$image_name);
+                    $model->setData('featured_image', $image_url);
+                } else {
+                    $featured_image = $this->getRequest()->getParam($image_id, null);
+                    $image_url = $featured_image['value'];
+                    if(!isset($featured_image['delete'])){
+                        $model->setData($image_id, $image_url);
+                    } else {
+                        if($image_url && file_exists(Mage::getBaseDir('media').DS.$image_url)) {
+                            unlink(Mage::getBaseDir('media').DS.$image_url);
+                        }
+                        $model->setData($image_id, null);
+                    }
+                }
                 $model->save();
                 $model->setRequestPath();
                 $_session->setFormData(false);
@@ -61,7 +85,7 @@ class Ip_Blogfeed_Adminhtml_PostsController extends Mage_Adminhtml_Controller_Ac
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
             }
             catch (Exception $e) {
-                Mage::getSingleton('adminhtml/session')->addError($this->__('An error occurred while saving this blog post.'));
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
             }
             $this->_redirectReferer();
         } else {
@@ -89,4 +113,35 @@ class Ip_Blogfeed_Adminhtml_PostsController extends Mage_Adminhtml_Controller_Ac
         $this->_redirect('*/*/');
     }
 
+    /**
+     * @param $path
+     */
+    protected function resize_image($path)
+    {
+        $image = new Varien_Image($path);
+        $image->constrainOnly(true);
+        $image->keepAspectRatio(true);
+        $image->keepFrame(false);
+        $image->keepTransparency(true);
+        $image->setImageBackgroundColor(false);
+        $image->backgroundColor(false);
+        $image->quality(100);
+        $image->setWatermarkImageOpacity(0);
+        $image->resize(120, 120);
+        $image->save($path);
+    }
+
+
+    /**
+     * @param $path
+     * @return mixed
+     */
+    protected function check_path($path)
+    {
+        $io = new Varien_Io_File();
+        if (!$io->isWriteable($path) && !$io->mkdir($path, 0777, true)) {
+            Mage::throwException(Mage::helper('adminhtml')->__("Cannot create writeable directory '%s'", $path));
+        }
+        return $path;
+    }
 }

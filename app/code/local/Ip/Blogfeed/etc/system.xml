@@ -32,6 +32,24 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </blog_url>
+                        <image_width translate="label">
+                            <label>Image Width</label>
+                            <frontend_type>text</frontend_type>
+                            <backend_model>blogfeed/backend_numeric</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </image_width>
+                        <image_height translate="label">
+                            <label>Image Height</label>
+                            <frontend_type>text</frontend_type>
+                            <backend_model>blogfeed/backend_numeric</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </image_height>
                     </fields>
                 </posts>
             </groups>

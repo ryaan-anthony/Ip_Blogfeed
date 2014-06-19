@@ -13,6 +13,7 @@ class Ip_Blogfeed_Block_Adminhtml_Posts_Edit_Form extends Mage_Adminhtml_Block_W
             'enctype' => 'multipart/form-data',
         ));
 
+
         $form->setUseContainer(true);
 
         $this->setForm($form);
@@ -28,6 +29,19 @@ class Ip_Blogfeed_Block_Adminhtml_Posts_Edit_Form extends Mage_Adminhtml_Block_W
             'style'     =>  'width:700px;',
             'required'  => true,
             'name'      => 'title',
+        ));
+
+        $width = Mage::getStoreConfig('blogfeed/posts/image_width');
+        $height = Mage::getStoreConfig('blogfeed/posts/image_height');;
+        $image_size = "The uploaded image will be resized to $width x $height.";
+
+        $fieldset->addField('featured_image', 'image', array(
+            'label'     => Mage::helper('blogfeed')->__('Featured Image'),
+            'class'     => '',
+            'style'     =>  'width:700px;',
+            'required'  => false,
+            'after_element_html' => '<p class="note"><span>'.$image_size.'</span></p>',
+            'name'      => 'featured_image',
         ));
 
         $fieldset->addField('url_key', 'text', array(
