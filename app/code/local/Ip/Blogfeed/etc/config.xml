@@ -82,6 +82,7 @@
     <default>
         <blogfeed>
             <posts>
+                <list_meta>Blog feed</list_meta>
                 <blog_url>blogfeed</blog_url>
                 <image_width>400</image_width>
                 <image_height>300</image_height>
